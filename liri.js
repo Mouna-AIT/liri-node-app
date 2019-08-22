@@ -53,7 +53,7 @@ switch (command) {
 function getBands(artist) {
     axios.get("https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp")
         .then(function(response) {
-            console.log("Name of the venue:", response.data[0].venue.name);
+            console.log("Name of the venue:", response.data[0].value.name);
             console.log("Venue location:", response.data[0].venue.city);
             var eventDate = moment(response.data[0].datetime).format('MM/DD/YYYY');
             console.log("Date of the Event:", eventDate);
