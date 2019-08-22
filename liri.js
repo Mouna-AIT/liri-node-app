@@ -10,8 +10,10 @@ require("dotenv").config();
 var keys = require("./keys.js");
 var axios = require("axios");
 var moment = require("moment");
+var Spotify = require('node-spotify-api');
 // var spotify = new Spotify(keys.spotify);
-var spotify = new spotify(keys.spotify);
+
+var spotify = new Spotify(keys.spotify);
 
 var defaultMovie = "Mr. Nobody";
 
