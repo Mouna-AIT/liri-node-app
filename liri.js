@@ -17,14 +17,17 @@ var spotify = new Spotify(keys.spotify);
 
 var defaultMovie = "Mr. Nobody";
 
+// file system
 
 var fs = require('fs');
 
 // Input Argument
+
 var command = process.argv[2];
 var input = process.argv[3]; //song or movie input
 
 //Switch Case
+
 switch (command) {
     case "concert-this":
         getBands(input);
