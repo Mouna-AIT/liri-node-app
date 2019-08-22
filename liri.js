@@ -2,24 +2,21 @@
 
 require("dotenv").config();
 
-// npm package 
-// var request = require("request");
-
-// Add the code required to import the keys.js file and store it in a variable.
+// Adding the code required to import the keys.js file and store it in a variable.
 
 var keys = require("./keys.js");
 var axios = require("axios");
 var moment = require("moment");
 var Spotify = require('node-spotify-api');
-// var spotify = new Spotify(keys.spotify);
+
+// //Required Spotify API & Keys
 
 var spotify = new Spotify(keys.spotify);
 
+// default Movie 
+
 var defaultMovie = "Mr. Nobody";
 
-// //Required Spotify API & Keys
-// var spotify = require('node-spotify-api');
-// var spotKeys = keys.spotify;
 
 var fs = require('fs');
 
