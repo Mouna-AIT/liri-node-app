@@ -37,7 +37,7 @@ switch (command) {
         break;
     case "movie-this":
         if (Value == "") {
-            Value = defaultMovie;
+            Value == defaultMovie;
         }
         getMovies(input)
         break;
@@ -53,10 +53,18 @@ switch (command) {
 function getBands(artist) {
     axios.get("https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp")
         .then(function(response) {
-            console.log("Name of the venue:", response.data[0].value.name);
-            console.log("Venue location:", response.data[0].venue.city);
-            var eventDate = moment(response.data[0].datetime).format('MM/DD/YYYY');
-            console.log("Date of the Event:", eventDate);
+            const data = response.data;
+            if (data === undefined || data.length == 0) {
+                console.log(`No events for ${artist}.`);
+            } else {
+                data.forEach((event, index) => {
+                    console.log(`========== ${index+1} ==========`)
+                    console.log("Name of the venue:", event.venue.name);
+                    console.log("Venue location:", event.venue.city);
+                    var eventDate = moment(event.datetime).format('MM/DD/YYYY');
+                    console.log("Date of the Event:", eventDate, "\n");
+                });
+            }
         })
         .catch(function(error) {
             console.log(error);
@@ -68,7 +76,7 @@ function getBands(artist) {
 function getSongs(song) {
 
     //If user has not specified a song
-    if (song === "") {
+    if (song === undefined || song == "") {
         song = "That's What I Like";
     }
 
