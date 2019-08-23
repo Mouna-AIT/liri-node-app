@@ -1,5 +1,4 @@
 // environment request 
-
 require("dotenv").config();
 
 // Adding the code required to import the keys.js file and store it in a variable.
@@ -10,19 +9,12 @@ var moment = require("moment");
 var Spotify = require('node-spotify-api');
 
 // //Required Spotify API & Keys
-
 var spotify = new Spotify(keys.spotify);
 
-// default Movie 
-
-var defaultMovie = "Mr. Nobody";
-
 // file system
-
 var fs = require('fs');
 
 // Input Argument
-
 var command = process.argv[2];
 var input = process.argv[3]; //song or movie input
 
@@ -36,9 +28,6 @@ switch (command) {
         getSongs(input);
         break;
     case "movie-this":
-        if (Value == "") {
-            Value == defaultMovie;
-        }
         getMovies(input)
         break;
     case "do-what-it-says":
@@ -59,8 +48,11 @@ function getBands(artist) {
             } else {
                 data.forEach((event, index) => {
                     console.log(`========== ${index+1} ==========`)
+                        // Name of the venue
                     console.log("Name of the venue:", event.venue.name);
+                    // Venue location
                     console.log("Venue location:", event.venue.city);
+                    // Date of the Even
                     var eventDate = moment(event.datetime).format('MM/DD/YYYY');
                     console.log("Date of the Event:", eventDate, "\n");
                 });
@@ -86,16 +78,21 @@ function getSongs(song) {
         }
         //Artist(s)
         console.log("Artists: ", data.tracks.items[0].album.artists[0].name)
-            // Preview 
+            // The song's name
+        console.log("Song Name: ", data.tracks.items[0].album.name)
+            // A preview link of the song from Spotify
         console.log("Preview Link: ", data.tracks.items[0].preview_url)
-            // The album of the song 
+            // The album that the song is from
         console.log("Album Name: ", data.tracks.items[0].album.name)
     });
 }
 
 // movie-this
-
 function getMovies(Movie) {
+
+    if (Movie === undefined || Movie == "") {
+        Movie = "Mr. Nobody";
+    }
 
     axios.get("http://www.omdbapi.com/?apikey=42518777&t=" + Movie)
         .then(function(data) {
@@ -118,24 +115,33 @@ function getMovies(Movie) {
 
     //Response if user does not type in a movie title
     if (Movie === "Mr. Nobody") {
-        console.log("-----------------------");
+        console.log("------------------------------");
         console.log("If you haven't watched 'Mr. Nobody,' then you should: http://www.imdb.com/title/tt0485947/");
         console.log("It's on Netflix!");
+        console.log("------------------------------");
     };
 }
 // do-what-it-says
 function doWhatItSays() {
-    fs.readFile('random.txt', 'utf8', function(error, data) {
-        if (error) {
-            console.log(error);
-        } else {
-            var dataArr = data.split(',');
-            if (dataArr[0] === 'spotify') {
-                spotifyThis(dataArr[1]);
-            }
-            if (dataArr[0] === 'omdb') {
-                omdbThis(dataArr[1]);
-            }
+    fs.readFile("random.txt", "utf8", function(err, data) {
+        data = data.split(",");
+        var command = data[0]
+        var input = data[1]
+            // getSongs(input)
+        console.log("------------------------------")
+        switch (command) {
+            case "concert-this":
+                getBands(input)
+                break;
+            case "spotify-this-song":
+                getSongs(input)
+                break;
+            case "movie-this":
+                getMovies(input)
+                break;
+            default:
+                break;
+
         }
     });
 }
