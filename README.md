@@ -11,7 +11,7 @@ do-what-it-says
 
 ## **concert-this:**
 
-![Concert-this](demo/Video4)
+![Concert-this](demo/concert-this.gif)
 
 his will search the Bands in Town Artist Events API for an artist and render the following information about each event to the terminal:
 
