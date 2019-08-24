@@ -27,7 +27,7 @@ This will search the Bands in Town Artist Events API for an artist and render th
 
 `node liri.js spotify-this-song <song name>`
 
-![Concert-this](demo/spotify-this-song.gif)
+![Spotify-this](demo/Spotify-this-song.gif)
 
 This will show the following information about the song in your terminal/bash window
 
@@ -42,7 +42,7 @@ _If no song is provided the search will default "That's What I Like"._
 
 `node liri.js movie-this <movie name>`
 
-![Concert-this](movie-this.gif)
+![movie-this](demo/movie-this.gif)
 
 This will output the following information to your terminal/bash window:
 
@@ -61,11 +61,11 @@ _If no movie name the search will default "Mr. Nobody"._
 
 `node liri.js do-what-it-says`
 
-![Concert-this](do-what-it-says.gif)
+![do-what-it-says-this](demo/do-what-it-says.gif)
 
 LIRI will use the text from “random.txt” and call on of LIRI’s commands. It should run movie-this for "Bullitt".
 
-## **Technologies used:** :U+1F469 U+200D U+1F4BB:
+## **Technologies used:** 👩‍💻
 
 * NPM packages
 * Spotify API
