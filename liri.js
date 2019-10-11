@@ -101,7 +101,7 @@ function getMovies(Movie) {
         Title of the movie: ${data.data.Title}
         Year the movie came out: ${data.data.Year}
         IMDB Rating of the movie: ${data.data.Rated}
-        Rotten Tomatoes Rating of the movie: ${data.data.Ratings[1].Value}
+        Rotten Tomatoes Rating of the movie: ${data.data.Ratings[0]}
         Country where the movie was produced: ${data.data.Country}
         Language of the movie: ${data.data.Language}
         Plot of the movie: ${data.data.Plot}
